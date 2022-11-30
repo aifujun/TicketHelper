@@ -1,0 +1,14 @@
+获取车站名  Get
+https://kyfw.12306.cn/otn/resources/js/framework/station_name.js
+
+station_version=1.9242
+
+
+查询车次  Get
+https://kyfw.12306.cn/otn/leftTicket/query
+
+leftTicketDTO.train_date=2022-11-26
+leftTicketDTO.from_station=CDW
+leftTicketDTO.to_station=RXW
+purpose_codes=ADULT
+

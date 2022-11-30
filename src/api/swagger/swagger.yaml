@@ -1,0 +1,118 @@
+# 必要字段! Swagger规范版本, 必须填2.0, 否则该YAML将不能用于Swagger其他组件
+swagger: "2.0"
+
+# 必要字段! 描述API接口信息的元数据
+info:
+  # 接口标题
+  title: Ticket helper API
+  # 接口文档的描述, description支持 markdown
+  description: 12306车票助手API
+  # 版本号
+  version: "1.0.0"
+
+tags:
+  - name: station_api
+    description: 车站信息接口
+  - name: ticket_api
+    description: 车票信息接口
+
+# Swagger会提供测试用例, host指定测试时的主机名, 如果没有指定就是当前主机, 可以指定端口
+host: 127.0.0.1:12080
+#定义的api的前缀, 必须以 / 开头, 测试用例的主机则为: host+bashPath
+basePath: /api/v1
+# 指定调用接口的协议, 必须是: ["http", "https", "ws", "wss"]．默认是http. schemes接受一个数组参数
+schemes:
+  - http
+  - https
+
+
+# 对应与http协议头request的Accept，调用者可接受类型,默认是*/*,定义的类型必须是http协议定义的 Mime Types,
+# RestfulAPI一般定义成application/json
+# 这两个是对所有接口的全局设置，在细化的接口中是还可以对应这两个属性来覆盖全局属性
+
+# 指定处理请求的提交内容类型（Content-Type）只影响与POST, PUT和PATCH等请求主体的操作。对于像GET这样的无人机操作, 它会被忽略
+consumes:
+    - application/json
+# 指定返回的内容类型，仅当request请求头中的（Accept）中包含指定类型才可以
+produces:
+  - application/json
+
+# 必要字段! 定义可有可操作的API
+paths:
+  /stations:
+    # 必要字段! 定义HTTP操作方法, 必须是http协议定义的方法
+    get:
+      # 接口概要
+      summary: 车站信息
+      # 接口描述
+      description: 对车站信息的查询
+      # 标签, 方便快速过滤出User相关的接口
+      tags:
+        - station_api
+      x-swagger-router-controller: api.service.controller.station_controller
+      operationId: query_station_info
+      parameters:
+        - name: stationName
+          in: query
+          description: 车站名, 如果指定则返回该车站的code, 不指定则返回所有.
+          required: false
+          type: string
+          # format: double
+        - name: stationCode
+          in: query
+          description: 车站code, 如果指定则返回该车站的name.
+          required: false
+          type: string
+          # format: double
+#      security:
+#        - apiKey: []
+#        - OAuth2: [admin]
+      responses:
+        200:
+          description: OK
+        400:
+          description: |
+            ##### Bad request
+            You have to specify either `stationName` or `stationCode` parameter.
+        404:
+          description: Not FOUND RESOURCE
+        500:
+          description: INTERNAL SERVER ERROR
+        default:
+          description: Unexpected error
+
+# 全局的definitions允许定义通用数据结构。任何时候无论是request还是response,schema里需要用到，都可以通过$ref 来引用它们
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+          type: integer
+          example: 1
+      name:
+          type: string
+          example: BlingBlingY
+    # Both properties are required
+    required:
+        - id
+        - name
+
+
+# securityDefinitions来定义该API支持的所有身份验证类型
+securityDefinitions:
+  BasicAuth:
+    type: basic
+  ApiKeyAuth:
+    type: apiKey
+    in: header
+    name: X-API-Key
+  OAuth2:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://example.com/oauth/authorize
+    tokenUrl: https://example.com/oauth/token
+    scopes:
+      read: Grants read access
+      write: Grants write access
+      admin: Grants read and write access to administrative information
+

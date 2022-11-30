@@ -1,0 +1,28 @@
+apiVersion: "1.0"
+
+info:
+   title: "12306 config"
+   description: some config of 12306
+   version: "1.0.0"
+
+servers:
+  - url: https://kyfw.12306.cn
+
+stationCode:
+  web:
+    summary: 获取车站名信息
+    description: 车站名和车站代码之间的对应关系
+    method: get
+    url: https://kyfw.12306.cn/otn/resources/js/framework/station_name.js
+    parameters:
+      - name: station_version
+        in: query
+        description: 车站名和code对应版本
+        required: true
+        schema:
+          type: number
+          format: double
+    security:
+      - apikey: [ ]
+    tags:
+      - station_api

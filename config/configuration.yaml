@@ -1,0 +1,45 @@
+###########################################
+# description:
+#   1.本配置中所有路径均以项目根目录为相对路口
+#   2.t12306中主要是12306相关的一些配置
+#   3.app中为项目app的配置(core)
+###########################################
+
+appVersion: "1.0.0"
+
+info:
+   title: "app config"
+   description: some config of app
+   version: "1.0.0"
+
+#servers:
+#  - url: https://127.0.0.1:12080
+
+t12306:
+  servers:
+    stationInfo:
+      summary: 获取车站名信息
+      description: 车站名和车站代码之间的对应关系
+      server:
+        method: get
+        url: https://kyfw.12306.cn/otn/resources/js/framework/station_name.js
+        parameters:
+          - name: station_version
+            in: query
+            description: 车站名和code对应版本
+            required: true
+            type: number
+            enum: []
+        security:
+          - apikey: []
+
+app:
+  logger:
+    # 日志级别: enum[DEBUG, INFO, WARNING, ERROR]
+    level: INFO
+    filePath: log
+  mode:
+    # 程序运行模式: enum[dev, test, debug, release]
+    dev
+
+
