@@ -16,8 +16,9 @@ mode: release
 cd ~/TicketHelper/src
 
 export PYTHONPATH=$PYTHONPATH:~/TicketHelper/src
+# export PYTHONDONTWRITEBYTECODE=1
 
-python __main__.py
+python -B __main__.py
 ```
 
 
