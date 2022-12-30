@@ -1,4 +1,4 @@
-from api.service.model.base import BaseModel, deserialize_data
+from server.api.service.model.base import BaseModel, deserialize_data
 
 
 class ResponseError(BaseModel):

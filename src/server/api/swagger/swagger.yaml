@@ -49,7 +49,7 @@ paths:
       # 标签, 方便快速过滤出User相关的接口
       tags:
         - station_api
-      x-swagger-router-controller: api.service.controller.station_controller
+      x-swagger-router-controller: server.api.service.controller.station_controller
       operationId: query_station_info
       parameters:
         - name: stationName

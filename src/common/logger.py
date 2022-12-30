@@ -6,7 +6,7 @@ from common.utils import SingletonType
 
 __all__ = ["Logger", "logger"]
 
-from manager.configure.config_manager import GlobalData
+from client.manager.configure.config_manager import GlobalData
 
 
 class PrettyLogger(logging.Logger):

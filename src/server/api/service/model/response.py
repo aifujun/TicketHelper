@@ -4,8 +4,8 @@ from typing import Generic, List, Optional, TypeVar
 from pydantic import BaseModel, Field, validator
 from pydantic.generics import GenericModel
 
-from api.service.common.ErrorCode import HttpStatusCode
-from api.service.config.resource import Resources
+from server.api.service.common.ErrorCode import HttpStatusCode
+from server.api.service.config.resource import Resources
 
 DataT = TypeVar('DataT')
 

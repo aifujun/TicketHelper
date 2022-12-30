@@ -4,13 +4,13 @@ import re
 
 import connexion
 
-from api.service.base.request_base import RequestBase
-from api.service.common.ErrorCode import ErrCode, HttpStatusCode
-from api.service.common.utils import send_response
-from api.service.model.TrainInfo import StationData
+from server.api.service.base.request_base import RequestBase
+from server.api.service.common.ErrorCode import ErrCode, HttpStatusCode
+from server.api.service.common.utils import send_response
+from server.api.service.model.TrainInfo import StationData
 from common.logger import logger
-from manager.configure.config_manager import GlobalData
-from manager.configure.t12306_manager import T12306Manager
+from client.manager.configure.config_manager import GlobalData
+from client.manager.configure.t12306_manager import T12306Manager
 
 __all__ = ["StationController", "query_station_info"]
 

@@ -1,8 +1,8 @@
 from pydantic import ValidationError
 
-from api.service.common.ErrorCode import HttpStatusCode, ErrCode
-from api.service.config.resource import Resources
-from api.service.model.response import Response, ResponseError, BaseResponse
+from server.api.service.common.ErrorCode import HttpStatusCode, ErrCode
+from server.api.service.config.resource import Resources
+from server.api.service.model.response import Response, ResponseError, BaseResponse
 from common.logger import logger
 
 

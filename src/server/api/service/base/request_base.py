@@ -13,7 +13,7 @@ import random
 
 import requests
 
-from api.service.common.ErrorCode import HttpStatusCode
+from server.api.service.common.ErrorCode import HttpStatusCode
 from common.exception import HttpCodeException
 from common.logger import logger
 from common.utils import retry

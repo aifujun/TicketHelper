@@ -2,7 +2,7 @@ import time
 
 from Spider.BaseSpider.base import Spider
 from common.common import HttpStatusCode
-from api.service.model.TrainInfo import TrainAllInfo
+from server.api.service.model.TrainInfo import TrainAllInfo
 
 
 class TicketHelper(object):

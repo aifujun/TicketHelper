@@ -1,6 +1,6 @@
 from common.exception import ConfigError, RequiredParamException
 from common.logger import logger
-from manager.configure.config_manager import GlobalData
+from client.manager.configure.config_manager import GlobalData
 
 
 class T12306Manager:
